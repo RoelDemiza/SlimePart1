@@ -15,13 +15,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameBox;
     [SerializeField] private float textSpeed = 0.05f;
 
- private DialogueData currentDialogue;   
+    private DialogueData currentDialogue;   
     private int index;
+    private PlayerControl player;
 
     public bool active => DialogueBox.activeSelf;
 
     private void OnEnable() => OnDialogueRequested += PrepareDialogue; 
     private void OnDisable() => OnDialogueRequested -= PrepareDialogue;
+
+    private void Start() 
+    {
+        player = FindObjectOfType<PlayerControl>();
+    }
+
 
 private void PrepareDialogue(DialogueData dialogue)
     {
@@ -40,6 +47,8 @@ private void PrepareDialogue(DialogueData dialogue)
 
                 DialogueBox.SetActive(true); 
                 NPCBox.SetActive(true);
+                player.canMove = false;
+                Time.timeScale = 0f;
 
                 NextLine(); 
             }
@@ -47,6 +56,8 @@ private void PrepareDialogue(DialogueData dialogue)
         else
         {
             EndDialogue();
+            player.canMove = true;
+            Time.timeScale = 1f;
         }
     }
 private void Update()
@@ -90,6 +101,7 @@ private void Update()
         else
         {
             EndDialogue();
+            Time.timeScale = 1f;
         }
     }
 
@@ -111,7 +123,7 @@ private void Update()
         foreach (char c in currentDialogue.lines[index].ToCharArray())
         {
             textBox.text += c; 
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
     }
 }
