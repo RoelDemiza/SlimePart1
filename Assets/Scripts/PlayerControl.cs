@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-	
-	 
+	public bool canMove;
 	public Animator anim;
 	
-        public float moveSpeed;
+    public float moveSpeed;
 
 	private Rigidbody2D rb;
-
-
 
 	private float x;
 	private float y;
@@ -30,8 +27,14 @@ public class PlayerControl : MonoBehaviour
 	}
 	private void Update()
 	{
-	GetInput();
-	Animate();
+		GetInput();
+		Animate();
+
+		if(!canMove)
+		{
+			rb.velocity = Vector3.zero;
+			return;
+		}
 	}
 	private void FixedUpdate()
 	{
