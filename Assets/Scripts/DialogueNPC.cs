@@ -3,6 +3,7 @@ using UnityEngine;
 public class DialogueNPC : MonoBehaviour
 {
     [SerializeField] private DialogueData dialogue;
+    [SerializeField] private bool isDestroy;
     
     private bool playerInRange; 
 
@@ -10,7 +11,19 @@ public class DialogueNPC : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
+            DestroyNPC();
+        }
+    }
 
+    private void DestroyNPC()
+    {
+        if (isDestroy)
+        {
+            DialogueManager.RequestDialogue(dialogue);
+            Destroy(this.gameObject);
+        }
+        else
+        {
             DialogueManager.RequestDialogue(dialogue);
         }
     }
