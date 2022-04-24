@@ -1963,6 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: d331758b07db6a14f8c42357179f6fd2, type: 2}
+  isDestroy: 1
 --- !u!1 &1703826597
 GameObject:
   m_ObjectHideFlags: 0
