@@ -20,7 +20,7 @@ public class DialogueNPC : MonoBehaviour
         if (isDestroy)
         {
             DialogueManager.RequestDialogue(dialogue);
-            Destroy(this.gameObject);
+            Destroy(this);
         }
         else
         {
