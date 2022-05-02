@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+	[SerializeField] private static Inventory _inventory;
+    public static Inventory inventory => _inventory;
 	public bool canMove;
 	public Animator anim;
 	
