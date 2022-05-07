@@ -5,15 +5,20 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     protected PlayerControl player;
+    [SerializeField] private ItemData itemData;
     [SerializeField] private bool pickUp = true;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && player != null)
-        PickUp();
+        {
+            PickUp();
+        }
+        
     }
 
     private void PickUp()
     {
-        if (pickUp) player.inventory.Add(this);
+        if (pickUp) PlayerControl.inventory.Add(this);
     }
 }
