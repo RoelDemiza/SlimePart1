@@ -19,14 +19,17 @@ public class PlayerControl : MonoBehaviour
 	private Vector2 input;
 	private bool moving;
 	
-	public VectorValue startingPosition;
+	// public VectorValue startingPosition;
 	
 	
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		transform.position = startingPosition.initialValue;
+		// transform.position = startingPosition.initialValue;
 	}
+	private void OnEnable() => SceneAnchor.OnSceneTransition += InitialisePosition; 
+    private void OnDisable() => SceneAnchor.OnSceneTransition -= InitialisePosition;
+	private void InitialisePosition(Vector2 position) => transform.position = position;
 	private void Update()
 	{
 		GetInput();

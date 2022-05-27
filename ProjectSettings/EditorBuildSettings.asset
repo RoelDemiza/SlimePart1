@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscene.unity
     guid: 99583ec38a1bf57458cd0c2c3de02d5b
+  - enabled: 1
+    path: Assets/Scripts/InventorySystem/InventoryScene.unity
+    guid: 4f0c10a89c301fd42959403b67ef4a24
+  - enabled: 1
+    path: Assets/Scripts/DialogueSystem/DialogueScene.unity
+    guid: 542f8a0d0fb41fd409a470d5c22949c1
   m_configObjects: {}
