@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Schwer.ItemSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-	[SerializeField] private static Inventory _inventory;
-    public static Inventory inventory => _inventory;
+	[SerializeField] private InventorySO _inventory = default;
+    public Inventory inventory => _inventory.value;
 	public bool canMove;
 	public Animator anim;
 	
