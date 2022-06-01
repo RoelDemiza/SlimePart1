@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+	[SerializeField] private Inventory _inventory;
+    public Inventory inventory => _inventory;
 	public bool canMove;
 	public Animator anim;
 	
@@ -30,6 +32,8 @@ public class PlayerControl : MonoBehaviour
 	{
 		GetInput();
 		Animate();
+		
+		if (Input.GetKeyDown(KeyCode.I)) InventoryUI.RequestInventory(inventory);
 
 		if(!canMove)
 		{
