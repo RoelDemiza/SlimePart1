@@ -1,28 +1,27 @@
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(menuName = "Scriptable Object/Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<Item> items;
+    public List<BookData> books;
 
-    public void Add(Item item)
+    public void Add(BookData book)
     {
-        if (!items.Contains(item))
+        if (!books.Contains(book))
         {
-            items.Add(item);
+            books.Add(book);
         }
     }
 
-    public void Remove(Item item)
+    public void Remove(BookData book)
     {
-        items.Remove(item);
+        books.Remove(book);
     }
 
-    public bool Contains(Item book)
+    public bool Contains(BookData book)
     {
-        return items.Contains(book);
+        return books.Contains(book);
     }
 
 }
